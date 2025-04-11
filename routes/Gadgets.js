@@ -7,3 +7,10 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+
+var express = require('express');
+const Gadgets_controlers= require('../controllers/Gadgets');
+var router = express.Router();
+/* GET Gadgets */
+router.get('/', Gadgets_controlers.Gadgets_view_all_Page );
+module.exports = router;

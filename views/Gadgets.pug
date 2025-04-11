@@ -3,17 +3,19 @@
 block content
   h1 Search Results: Gadgets
 
-  - var results = [{ gadget_name: 'Smart Watch', brand: 'FitBit', battery_life: 24 },{ gadget_name: 'Noise Cancelling Headphones', brand: 'Sony', battery_life: 30 },{ gadget_name: 'Portable Speaker', brand: 'JBL', battery_life: 15 }];
+  - let items = results
 
   .container-fluid
     .row
-      each gadget, index in results
-        .col-sm-2(onclick=`buy(${index})`, style="cursor:pointer; border: 1px solid gray; padding: 10px; margin: 5px;")
+      each gadget, index in items
+        .col-sm-2(
+          onclick=`buy(${index})`, 
+          style="cursor: pointer; border: 1px solid gray; padding: 10px; margin: 5px;"
+        )
           h5 #{gadget.gadget_name}
           p Brand: #{gadget.brand}
           p Battery: #{gadget.battery_life} hrs
 
-  //- Add script for buy function
   script.
     function buy(index) {
       alert(`You purchased item ${index}`);
