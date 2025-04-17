@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h1= title
+  form(id='GadgetsForm', action="/resource/Gadgets", method="POST")
+    div.form-group
+      label.GadgetsAttr(for='gadget_name') Gadgets name
+      input#gadget_name(type='text', name='gadget_name')
+    div.form-group
+      label.GadgetsAttr(for='brand') Gadgets brand
+      input#brand(type='text', name='brand')
+    div.form-group
+      label.GadgetsAttr(for='battery_life') Gadgets battery life
+      input#battery_life(type='number', name='battery_life')
+    input(type="submit")
+  script.
+    document.forms['GadgetsForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      // TODO do something here to show user that form is being submitted
+      fetch(event.target.action, {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Save succeded")
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Save failed " + error )
+      });
+    });
+

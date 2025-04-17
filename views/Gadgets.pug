@@ -1,22 +1,39 @@
- extends layout
+extends layout
 
 block content
-  h1 Search Results: Gadgets
+  h2 Search Results for 
+  br
+  a.btn.btn-success(href="/Gadgets/create") Create Gadget  
+  br
 
   - let items = results
-
-  .container-fluid
-    .row
+  div.container-fluid
+    div.row
       each gadget, index in items
-        .col-sm-2(
-          onclick=`buy(${index})`, 
-          style="cursor: pointer; border: 1px solid gray; padding: 10px; margin: 5px;"
+        div.col-sm-3.bg-light.text-dark.p-3.m-2.rounded.shadow.text-center(
+          style="border: 1px solid #ccc; cursor: pointer;"
         )
           h5 #{gadget.gadget_name}
+          p Gadget Name: #{gadget.gadget_name}
           p Brand: #{gadget.brand}
-          p Battery: #{gadget.battery_life} hrs
+          p Battery Life: #{gadget.battery_life} hrs
+          div.mt-2
+            button.btn.btn-warning.ml-1(onclick=`updateGadget(${index})`) 🛠️ Update
+            button.btn.btn-primary.ml-1(onclick=`detailGadget(${index})`) 📄 Detail
+            button.btn.btn-danger.ml-1(onclick=`deleteGadget(${index})`) ❌ Delete
+          br
+          br
 
   script.
-    function buy(index) {
-      alert(`You purchased item ${index}`);
+    function updateGadget(index) {
+      alert("Update Gadget " + index);
+      // TODO: redirect to update page
+    }
+    function detailGadget(index) {
+      alert("View details for Gadget " + index);
+      // TODO: redirect to detail page
+    }
+    function deleteGadget(index) {
+      alert("Delete Gadget " + index);
+      // TODO: send DELETE request
     }

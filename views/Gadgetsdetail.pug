@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1= title
+  - let Gadgetsid = toShow._id
+  - let gadget_name = toShow.gadget_name
+  - let brand = toShow.brand
+  - let battery_life = toShow.battery_life
+
+  div
+    div.row
+      div(class='GadgetsAttr mr-3') Gadgets ID is:
+      div #{Gadgetsid}
+    div.row
+      div(class='GadgetsAttr mr-3') Gadgets name is:
+      div #{gadget_name}
+    div.row
+      div(class='GadgetsAttr mr-3') Gadgets brand is:
+      div #{brand}
+    div.row
+      div(class='GadgetsAttr mr-3') Gadgets battery life is:
+      div #{battery_life}
