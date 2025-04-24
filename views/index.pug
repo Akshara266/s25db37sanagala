@@ -1,18 +1,12 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to Express Page
-  button(type="button", class="btn btn-secondary", onclick="faster()") Sample Button
-  div#faster Add in extra
-
-  script.
-    let value = 1;
-    let amt = 2;
-    function faster() {
-      amt *= 2;
-      value += amt;
-      document.getElementById("faster").innerHTML = `Faster ${value} times ${amt}`;
-    }
-
-    a(href="/Gadgets", class="btn btn-link mt-3") View Gadgets Search Results
+  if (!user)
+    a(href="/login") Login
+    br
+    a(href="/register") Register
+  if (user)
+    p You are currently logged in as #{user.username}
+    a(href="/Gadgets") Take me to Gadgets
+    br
+    a(href="/logout") Logout
